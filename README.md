@@ -105,5 +105,33 @@ This banking application stores data within a MySql database, which must be crea
     	  constraint chk_cvv check check (cvv REGEXP '^[0-9]{3}$')
     );
     ```
-10. Populate the database with different banks and account types.
+10. Populate the database with different banks and account types:
+    
+    - Bank examples:
+       ```SQL
+      INSERT INTO banking_app.banks (bank_name, bank_code, address1, address2, address3, city, county, postcode)
+      VALUES ('Barcwest', '50-12-56', '5', 'Nottireal Road', 'Wigham', 'Nottireal', 'Notton', 'NO9 1WG');
+      
+      INSERT INTO banking_app.banks (bank_name, bank_code, address1, address2, address3, city, county, postcode)
+      VALUES ('Barcwest', '12-48-54', '21', 'Gunners Street', 'Greenville', 'Breakton', 'Centshire', 'BR21 1GD');
+
+      INSERT INTO banking_app.banks (bank_name, bank_code, address1, address2, address3, city, county, postcode)
+      VALUES ('Barcwest', '13-18-14', 'Bank Building', '15', 'High Street', 'Madeupton', 'Madeupshire', 'MD1 1UP');
+       ```
+       
+    - Account type examples:
+      ```SQL
+      INSERT INTO banking_app.account_types (account_type_name, account_type_interest)
+      VALUES ('current', 1.67);
+         
+      INSERT INTO banking_app.account_types (account_type_name, account_type_interest)
+      VALUES ('savings', 3.98);
+         
+      INSERT INTO banking_app.account_types (account_type_name, account_type_interest)
+      VALUES ('isa', 5.13);
+         
+      INSERT INTO banking_app.account_types (account_type_name, account_type_interest)
+      VALUES ('deluxe_savings', 9.65);
+       ```
+    
    
