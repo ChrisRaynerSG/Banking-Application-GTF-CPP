@@ -1,28 +1,23 @@
 #include <iostream>
 #include <mysqlx/xdevapi.h>
 #include <mysql/jdbc.h>
-#include <jdbc/cppconn/exception.h>
+#include <boost/property_tree/ptree.hpp>
+#include <boost/property_tree/ini_parser.hpp>
 
 using namespace std;
 
-
 int main() {
-
-    const string host = "tcp://127.0.0.1:3306";
-    const string user = "root";
-    const string password = "root";
-
-    cout << "Connecting to host: "<< host << endl;
 
     try {
 
-        // mysqlx::Session session("localhost", 33060, "root", "root");
-        //
-        // cout << "Connected" << endl;
-        //
-        // mysqlx::Schema schema = session.getSchema("banking_app");
-        //
-        // schema.getTable()
+        boost::property_tree::ptree pt;
+        read_ini("config/DatabaseProperties.ini", pt);
+
+        const auto host = pt.get<std::string>("database.url");
+        const auto user = pt.get<std::string>("database.user");
+        const auto password = pt.get<std::string>("database.password");
+
+        cout << "Connecting to host: "<< host << endl;
 
         sql::mysql::MySQL_Driver *driver = sql::mysql::get_mysql_driver_instance();
 
@@ -53,8 +48,16 @@ int main() {
             cout << " | " << res->getString("postcode") << " |" << endl;
         }
     }
-    catch (const mysqlx::Error &err) {
-        cout << "ERROR: " << err <<endl;
+    catch (const boost::property_tree::ini_parser_error &err) {
+        cerr << "Error reading INI file: " << err.what() << endl;
+        return 1;
+    }
+    catch (const sql::SQLException &err) {
+        cerr << "SQL error: " << err.what() << endl;
+        return 1;
+    }
+    catch (const std::exception &err) {
+        cerr << "Error: " << err.what() << endl;
         return 1;
     }
 
