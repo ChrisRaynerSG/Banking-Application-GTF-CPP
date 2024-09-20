@@ -1,15 +1,10 @@
 # ninja log v6
-5	838	7485192159988770	CMakeFiles/Banking_Application_GTF_CPP.dir/main.cpp.obj	257c790b3926be5b
+5	780	7485224345621886	CMakeFiles/Banking_Application_GTF_CPP.dir/main.cpp.obj	257c790b3926be5b
 1	5	7484586035251387	clean	aa8742efbabc4186
-5	108	7485192269977882	Banking_Application_GTF_CPP.exe	8874ac2468d29df8
-1	164	7485208257042319	build.ninja	59026f56ef701a63
+687	781	7485225370952754	Banking_Application_GTF_CPP.exe	e11340df1fdaa574
+1	164	7485241168554895	build.ninja	59026f56ef701a63
 8	238	7485162414385862	CMakeFiles/Banking_Application_GTF_CPP.dir/dtos/UserDto.cpp.obj	e8b6ed456c40fc08
 9	133	7485190521809387	CMakeFiles/Banking_Application_GTF_CPP.dir/interface/UiComponents.cpp.obj	ab58477f8bc495b4
 7	140	7485192160008775	CMakeFiles/Banking_Application_GTF_CPP.dir/interface/WelcomeScreen.cpp.obj	51bdd08441839e7
-12	723	7485224140513323	CMakeFiles/Banking_Application_GTF_CPP.dir/database-utilities/DatabaseConnection.cpp.obj	4931fe9f24d74191
-6	777	7485224140452053	CMakeFiles/Banking_Application_GTF_CPP.dir/main.cpp.obj	257c790b3926be5b
-7	282	7485224345651901	CMakeFiles/Banking_Application_GTF_CPP.dir/Login.cpp.obj	39f80c72d07a4b9e
-5	780	7485224345621886	CMakeFiles/Banking_Application_GTF_CPP.dir/main.cpp.obj	257c790b3926be5b
-780	969	7485224353373317	Banking_Application_GTF_CPP.exe	e11340df1fdaa574
 5	686	7485225364146018	CMakeFiles/Banking_Application_GTF_CPP.dir/database-utilities/DatabaseConnection.cpp.obj	4931fe9f24d74191
-687	781	7485225370952754	Banking_Application_GTF_CPP.exe	e11340df1fdaa574
+7	282	7485224345651901	CMakeFiles/Banking_Application_GTF_CPP.dir/Login.cpp.obj	39f80c72d07a4b9e
