@@ -11,7 +11,14 @@ include_directories("C:/Program Files/MySQL/MySQL Connector C++ 9.0/include" ${B
 link_directories("C:/Program Files/MySQL/MySQL Connector C++ 9.0/lib64/vs14")
 
 # Add the executable
-add_executable(Banking_Application_GTF_CPP main.cpp)
+add_executable(Banking_Application_GTF_CPP main.cpp
+        dtos/UserDto.cpp
+        dtos/UserDto.h
+        interface/WelcomeScreen.cpp
+        interface/WelcomeScreen.h
+        interface/UiComponents.cpp
+        interface/UiComponents.h
+)
 
 # Link against MySQL Connector C++ (dynamic linking) and necessary system libraries
 target_link_libraries(Banking_Application_GTF_CPP

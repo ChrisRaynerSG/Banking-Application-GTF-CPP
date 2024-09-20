@@ -57,6 +57,30 @@ build CMakeFiles\Banking_Application_GTF_CPP.dir\main.cpp.obj: CXX_COMPILER__Ban
   TARGET_COMPILE_PDB = CMakeFiles\Banking_Application_GTF_CPP.dir\
   TARGET_PDB = Banking_Application_GTF_CPP.pdb
 
+build CMakeFiles\Banking_Application_GTF_CPP.dir\dtos\UserDto.cpp.obj: CXX_COMPILER__Banking_Application_GTF_CPP_unscanned_Debug F$:\cjpra\Documents\BankingApplication\Banking-Application-GTF-CPP\dtos\UserDto.cpp || cmake_object_order_depends_target_Banking_Application_GTF_CPP
+  FLAGS = /DWIN32 /D_WINDOWS /EHsc /Ob0 /Od /RTC1 -std:c++17
+  INCLUDES = -I"C:\Program Files\MySQL\MySQL Connector C++ 9.0\include" -IC:\boost_1_86_0
+  OBJECT_DIR = CMakeFiles\Banking_Application_GTF_CPP.dir
+  OBJECT_FILE_DIR = CMakeFiles\Banking_Application_GTF_CPP.dir\dtos
+  TARGET_COMPILE_PDB = CMakeFiles\Banking_Application_GTF_CPP.dir\
+  TARGET_PDB = Banking_Application_GTF_CPP.pdb
+
+build CMakeFiles\Banking_Application_GTF_CPP.dir\interface\WelcomeScreen.cpp.obj: CXX_COMPILER__Banking_Application_GTF_CPP_unscanned_Debug F$:\cjpra\Documents\BankingApplication\Banking-Application-GTF-CPP\interface\WelcomeScreen.cpp || cmake_object_order_depends_target_Banking_Application_GTF_CPP
+  FLAGS = /DWIN32 /D_WINDOWS /EHsc /Ob0 /Od /RTC1 -std:c++17
+  INCLUDES = -I"C:\Program Files\MySQL\MySQL Connector C++ 9.0\include" -IC:\boost_1_86_0
+  OBJECT_DIR = CMakeFiles\Banking_Application_GTF_CPP.dir
+  OBJECT_FILE_DIR = CMakeFiles\Banking_Application_GTF_CPP.dir\interface
+  TARGET_COMPILE_PDB = CMakeFiles\Banking_Application_GTF_CPP.dir\
+  TARGET_PDB = Banking_Application_GTF_CPP.pdb
+
+build CMakeFiles\Banking_Application_GTF_CPP.dir\interface\UiComponents.cpp.obj: CXX_COMPILER__Banking_Application_GTF_CPP_unscanned_Debug F$:\cjpra\Documents\BankingApplication\Banking-Application-GTF-CPP\interface\UiComponents.cpp || cmake_object_order_depends_target_Banking_Application_GTF_CPP
+  FLAGS = /DWIN32 /D_WINDOWS /EHsc /Ob0 /Od /RTC1 -std:c++17
+  INCLUDES = -I"C:\Program Files\MySQL\MySQL Connector C++ 9.0\include" -IC:\boost_1_86_0
+  OBJECT_DIR = CMakeFiles\Banking_Application_GTF_CPP.dir
+  OBJECT_FILE_DIR = CMakeFiles\Banking_Application_GTF_CPP.dir\interface
+  TARGET_COMPILE_PDB = CMakeFiles\Banking_Application_GTF_CPP.dir\
+  TARGET_PDB = Banking_Application_GTF_CPP.pdb
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target Banking_Application_GTF_CPP
@@ -65,7 +89,7 @@ build CMakeFiles\Banking_Application_GTF_CPP.dir\main.cpp.obj: CXX_COMPILER__Ban
 #############################################
 # Link the executable Banking_Application_GTF_CPP.exe
 
-build Banking_Application_GTF_CPP.exe: CXX_EXECUTABLE_LINKER__Banking_Application_GTF_CPP_Debug CMakeFiles\Banking_Application_GTF_CPP.dir\main.cpp.obj | C$:\Program$ Files\MySQL\MySQL$ Connector$ C++$ 9.0\lib64\vs14\mysqlcppconn.lib C$:\Program$ Files\MySQL\MySQL$ Connector$ C++$ 9.0\lib64\vs14\mysqlcppconnx.lib C$:\Program$ Files\MySQL\MySQL$ Connector$ C++$ 9.0\lib64\vs14\libcrypto.lib C$:\Program$ Files\MySQL\MySQL$ Connector$ C++$ 9.0\lib64\vs14\libssl.lib
+build Banking_Application_GTF_CPP.exe: CXX_EXECUTABLE_LINKER__Banking_Application_GTF_CPP_Debug CMakeFiles\Banking_Application_GTF_CPP.dir\main.cpp.obj CMakeFiles\Banking_Application_GTF_CPP.dir\dtos\UserDto.cpp.obj CMakeFiles\Banking_Application_GTF_CPP.dir\interface\WelcomeScreen.cpp.obj CMakeFiles\Banking_Application_GTF_CPP.dir\interface\UiComponents.cpp.obj | C$:\Program$ Files\MySQL\MySQL$ Connector$ C++$ 9.0\lib64\vs14\mysqlcppconn.lib C$:\Program$ Files\MySQL\MySQL$ Connector$ C++$ 9.0\lib64\vs14\mysqlcppconnx.lib C$:\Program$ Files\MySQL\MySQL$ Connector$ C++$ 9.0\lib64\vs14\libcrypto.lib C$:\Program$ Files\MySQL\MySQL$ Connector$ C++$ 9.0\lib64\vs14\libssl.lib
   FLAGS = /DWIN32 /D_WINDOWS /EHsc /Ob0 /Od /RTC1
   LINK_FLAGS = /machine:x64 /debug /INCREMENTAL /subsystem:console
   LINK_LIBRARIES = "C:\Program Files\MySQL\MySQL Connector C++ 9.0\lib64\vs14\mysqlcppconn.lib"  "C:\Program Files\MySQL\MySQL Connector C++ 9.0\lib64\vs14\mysqlcppconnx.lib"  "C:\Program Files\MySQL\MySQL Connector C++ 9.0\lib64\vs14\libcrypto.lib"  "C:\Program Files\MySQL\MySQL Connector C++ 9.0\lib64\vs14\libssl.lib"  kernel32.lib  user32.lib  gdi32.lib  winspool.lib  shell32.lib  ole32.lib  oleaut32.lib  uuid.lib  comdlg32.lib  advapi32.lib  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib

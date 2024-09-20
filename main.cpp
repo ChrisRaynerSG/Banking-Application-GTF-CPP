@@ -1,15 +1,17 @@
 #include <iostream>
+#include <thread>
 #include <mysqlx/xdevapi.h>
 #include <mysql/jdbc.h>
 #include <boost/property_tree/ptree.hpp>
 #include <boost/property_tree/ini_parser.hpp>
+
+#include "interface/WelcomeScreen.h"
 
 using namespace std;
 
 int main() {
 
     try {
-
         boost::property_tree::ptree pt;
         read_ini("config/DatabaseProperties.ini", pt);
 
@@ -17,7 +19,7 @@ int main() {
         const auto user = pt.get<std::string>("database.user");
         const auto password = pt.get<std::string>("database.password");
 
-        cout << "Connecting to host: "<< host << endl;
+        cout << WelcomeScreen::getConnectionScreen("connection");
 
         sql::mysql::MySQL_Driver *driver = sql::mysql::get_mysql_driver_instance();
 
@@ -28,25 +30,46 @@ int main() {
 
         std::unique_ptr<sql::Connection> con(driver->connect(host, user, password));
 
-        cout << "Connected!" << endl;
-
+        std::this_thread::sleep_for(std::chrono::seconds(2));
+        cout << WelcomeScreen::getConnectionScreen("connected");
         con->setSchema("banking_app");
+        std::this_thread::sleep_for(std::chrono::seconds(2));
+        cout << WelcomeScreen::getWelcomeScreen("init");
 
-        std::unique_ptr<sql::Statement> stmt(con->createStatement());
-        std::unique_ptr<sql::ResultSet> res(stmt->executeQuery("SELECT * FROM banks"));
+        string selection;
+        string  email;
+        string loginPassword;
 
-        cout << "Bank ID | Bank Name | Bank Code | Addr1 | Addr2 | Addr3 | City | Postcode |" << endl;
-
-        while (res->next()) {
-            cout<< "" <<res->getInt("bank_id");
-            cout << "       | " << res->getString("bank_name");
-            cout << "  | " << res->getString("bank_code");
-            cout << "  | " << res->getString("address1");
-            cout << " | " << res->getString("address2");
-            cout << " | " << res->getString("address3");
-            cout << " | " << res->getString("city");
-            cout << " | " << res->getString("postcode") << " |" << endl;
+        cout << "Please select: ";
+        cin >> selection;
+        while(selection != "L" && selection != "R") {
+            cout << WelcomeScreen::getWelcomeScreen("inval");
+            cout << "Please select: ";
+            cin >> selection;
         }
+        if(selection == "L") {
+            cout << WelcomeScreen::getWelcomeScreen("loginCred");
+            cout << "Email address: ";
+            cin >>  email;
+            cout << "Password: ";
+            cin >> loginPassword;
+            sql::PreparedStatement *pstmt = con->prepareStatement("SELECT * FROM users WHERE email = ? AND password = ?");
+            for(int i=1; i<3;i++) {
+                pstmt->setString(i, email);
+                pstmt->setString(i, loginPassword);
+            }
+            std::unique_ptr<sql::ResultSet> resLogin(pstmt->executeQuery());
+            while (resLogin->next()) {
+                string storedPassword = resLogin->getString("password");
+                if(loginPassword == storedPassword) {
+                    cout << "Welcome " << resLogin->getString("first_name") << " " << resLogin->getString("last_name") << "! What would you like to do today?"<< endl;
+                }
+            }
+        }
+        else if(selection == "R") {
+
+        }
+        return 0;
     }
     catch (const boost::property_tree::ini_parser_error &err) {
         cerr << "Error reading INI file: " << err.what() << endl;
@@ -61,29 +84,4 @@ int main() {
         return 1;
     }
 
-    string blankTile {"|                                                                        |"};
-    string selection;
-    string  email;
-    string loginPassword;
-
-    cout << "__________________________________________________________________________" << endl;
-    cout << "|                  CRSG command line banking application                 |" << endl;
-    cout << "|                      Please select an option below                     |" << endl;
-    for(int i=0; i<5; i++) {
-        cout << blankTile << endl;
-    }
-    cout << "|                                 Register                               |" << endl;
-    cout << "|                                  Login                                 |" << endl;
-    cout << "|________________________________________________________________________|" << endl;
-    cin >> selection;
-    if(selection == "L") {
-        cout << "Email address: " << endl;
-        cin >>  email;
-        cout << "Password: " << endl;
-        cin >> loginPassword;
-    }
-    else if(selection == "R") {
-
-    }
-    return 0;
 }
