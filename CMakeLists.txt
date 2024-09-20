@@ -18,6 +18,10 @@ add_executable(Banking_Application_GTF_CPP main.cpp
         interface/WelcomeScreen.h
         interface/UiComponents.cpp
         interface/UiComponents.h
+        Login.cpp
+        Login.h
+        database-utilities/DatabaseConnection.cpp
+        database-utilities/DatabaseConnection.h
 )
 
 # Link against MySQL Connector C++ (dynamic linking) and necessary system libraries

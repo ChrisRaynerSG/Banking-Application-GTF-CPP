@@ -5,34 +5,21 @@
 #include <boost/property_tree/ptree.hpp>
 #include <boost/property_tree/ini_parser.hpp>
 
+#include "database-utilities/DatabaseConnection.h"
 #include "interface/WelcomeScreen.h"
 
 using namespace std;
 
 int main() {
 
+    bool isRunning = true;
+    while (isRunning) {
+        isRunning = false;
+    }
+
     try {
-        boost::property_tree::ptree pt;
-        read_ini("config/DatabaseProperties.ini", pt);
 
-        const auto host = pt.get<std::string>("database.url");
-        const auto user = pt.get<std::string>("database.user");
-        const auto password = pt.get<std::string>("database.password");
-
-        cout << WelcomeScreen::getConnectionScreen("connection");
-
-        sql::mysql::MySQL_Driver *driver = sql::mysql::get_mysql_driver_instance();
-
-        if (!driver) {
-            cerr << "Error: Failed to get MySQL driver instance." << endl;
-            return 1;
-        }
-
-        std::unique_ptr<sql::Connection> con(driver->connect(host, user, password));
-
-        std::this_thread::sleep_for(std::chrono::seconds(2));
-        cout << WelcomeScreen::getConnectionScreen("connected");
-        con->setSchema("banking_app");
+        auto *databaseConnection = new DatabaseConnection();
         std::this_thread::sleep_for(std::chrono::seconds(2));
         cout << WelcomeScreen::getWelcomeScreen("init");
 
@@ -53,7 +40,7 @@ int main() {
             cin >>  email;
             cout << "Password: ";
             cin >> loginPassword;
-            sql::PreparedStatement *pstmt = con->prepareStatement("SELECT * FROM users WHERE email = ? AND password = ?");
+            sql::PreparedStatement *pstmt = databaseConnection->getConnection()->prepareStatement("SELECT * FROM users WHERE email = ? AND password = ?");
             for(int i=1; i<3;i++) {
                 pstmt->setString(i, email);
                 pstmt->setString(i, loginPassword);
